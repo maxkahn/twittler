@@ -3,6 +3,7 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <link href="main.css" rel="stylesheet">
   </head>
   <body>
 
@@ -22,7 +23,11 @@
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<li></li>');
-          $tweet.append('<span class="username">' + '@' + tweet.user +"</span>: " + tweet.message + tweet.created_at);
+          //$tweetcontents lists out date/time and username/message as separate entries of a list
+          var $tweetcontents = $('<ol></ol>');
+          $tweetcontents.append('<li>' + tweet.created_at + '</li>');
+          $tweetcontents.append('<li><span class="username">' + '@' + tweet.user +"</span>: " + tweet.message +'</li>');
+          $tweetcontents.appendTo($tweet);
           $tweet.appendTo($list);
           index -= 1;
         }
@@ -39,8 +44,11 @@
             //to make sure tweets appear newest first, change to >= to sync up with original tweets.
             var tweet = streams.home[index];
             var $tweet = $('<li></li>');
-            $tweet.append('<span class="username">' + '@' + tweet.user +"</span>: " + tweet.message + tweet.created_at);
-            //$tweet.text('@' + tweet.user + ': ' + tweet.message + tweet.created_at);
+            //$tweetcontents lists out date/time and username/message as separate entries of a list
+            var $tweetcontents = $('<ol></ol>');
+            $tweetcontents.append('<li>' + tweet.created_at + '</li>');
+            $tweetcontents.append('<li><span class="username">' + '@' + tweet.user +"</span>: " + tweet.message + '</li>');
+            $tweetcontents.appendTo($tweet);
             $tweet.prependTo($list);
             index -= 1;
           }
