@@ -27,12 +27,33 @@
           index -= 1;
         }
 
+        
+
+        index = streams.home.length - 1;
+        var origtweets = streams.home.length - 1;
+        //mew tweets are added to the end of streams, so we look at the end for new tweets
+
+        $(".new-tweets").on('click', function() {
+          index = streams.home.length - 1;
+          while (index > origtweets) {
+            //to make sure tweets appear newest first, change to >= to sync up with original tweets.
+            var tweet = streams.home[index];
+            var $tweet = $('<li></li>');
+            $tweet.append('<span class="username">' + '@' + tweet.user +"</span>: " + tweet.message + tweet.created_at);
+            //$tweet.text('@' + tweet.user + ': ' + tweet.message + tweet.created_at);
+            $tweet.prependTo($list);
+            index -= 1;
+          }
+          origtweets = streams.home.length - 1;
+          //reset origtweets to the end of streams.home, now that we updated.
+        });
+
         //function to get a user's timeline by clicking on a username
-        $(".username").on('click', function() {
+        $(".all-tweets").on('click', ".username", function() {
           //clear the timeline; only displays one user's history at a time (for legibility)
           var $timeline = $('.user-timeline');
           $timeline.html('');
-          alert($(this) + 'was clicked');
+          //alert($(this) + 'was clicked');
           var username = $(this).closest('.username').text().slice(1);
           var $username = $('<li></li>');
           $username.append(username);
@@ -45,24 +66,6 @@
             $tweet.appendTo($timeline);
             counter -= 1;
           }
-        });
-
-        index = streams.home.length - 1;
-        var origtweets = streams.home.length - 1;
-        //mew tweets are added to the end of streams, so we look at the end for new tweets
-
-        $(".new-tweets").on('click', function() {
-          index = streams.home.length - 1;
-          while (index > origtweets) {
-            //to make sure tweets appear newest first, change to >= to sync up with original tweets.
-            var tweet = streams.home[index];
-            var $tweet = $('<li></li>');
-            $tweet.text('@' + tweet.user + ': ' + tweet.message + tweet.created_at);
-            $tweet.prependTo($list);
-            index -= 1;
-          }
-          origtweets = streams.home.length - 1;
-          //reset origtweets to the end of streams.home, now that we updated.
         });
 
       });
