@@ -8,18 +8,20 @@
 
     <p>Test Paragraph</p>
     <button class="new-tweets">New Tweets</button>
+    <ol>Tweets List</ol>
     <script>
 
       $(document).ready(function(){
         var $body = $('body');
+        var $list = $('ol');
         //$body.html('<p>Test Paragraph</p>');
 
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
+          var $tweet = $('<li></li>');
           $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
+          $tweet.appendTo($list);
           index -= 1;
         }
 
@@ -29,13 +31,15 @@
 
         $(".new-tweets").on('click', function() {
           index = streams.home.length - 1;
-          while (index >= 0) {
+          while (index > origtweets) {
+            //to make sure tweets appear newest first, change to >= to sync up with original tweets.
             var tweet = streams.home[index];
-            var $tweet = $('<div></div>');
+            var $tweet = $('<li></li>');
             $tweet.text('@' + tweet.user + ': ' + tweet.message);
-            $tweet.prependTo($body);
+            $tweet.prependTo($list);
             index -= 1;
           }
+          origtweets = streams.home.length - 1;
         });
 
       });
