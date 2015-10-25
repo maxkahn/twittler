@@ -7,7 +7,7 @@
   </head>
   <body>
 
-    <button class="new-tweets">New Tweets</button>
+    
     <div class="group">
     <ol class="all-tweets"></ol>
     <ol class="user-timeline">
@@ -20,7 +20,7 @@
       $(document).ready(function(){
         var $body = $('body');
         var $list = $('.all-tweets');
-        $list.append('<li><h4 class="heading">All tweets, newest first.</h4></li>');
+        $list.append('<li><h4 class="heading">All tweets, newest first. Click <button class="new-tweets">here</button> for new tweets.</h4></li>');
         //$body.html('<p>Test Paragraph</p>');
 
         var index = streams.home.length - 1;
@@ -42,7 +42,7 @@
         var origtweets = streams.home.length - 1;
         //mew tweets are added to the end of streams, so we look at the end for new tweets
 
-        $(".new-tweets").on('click', function() {
+        $(".all-tweets").on('click', '.new-tweets', function() {
           //clears header before prepending new list items.
           $(".all-tweets li").first().remove();
           index = origtweets + 1;
@@ -59,7 +59,7 @@
             index += 1;
           }
           //restores header, now that new list items have been prepended.
-          $list.prepend('<li><h4>All tweets, newest first.</h4></li>');
+          $list.prepend('<li><h4>All tweets, newest first. Click <button class="new-tweets">here</button> for new tweets.</h4></li>');
           origtweets = streams.home.length - 1;
           //reset origtweets to the end of streams.home, now that we updated.
         });
