@@ -8,12 +8,14 @@
 
     <p>Test Paragraph</p>
     <button class="new-tweets">New Tweets</button>
-    <ol></ol>
+    <ol class="all-tweets"></ol>
+    <ol class="user-timeline"></ol>
+    
     <script>
 
       $(document).ready(function(){
         var $body = $('body');
-        var $list = $('ol');
+        var $list = $('.all-tweets');
         //$body.html('<p>Test Paragraph</p>');
 
         var index = streams.home.length - 1;
@@ -24,6 +26,21 @@
           $tweet.appendTo($list);
           index -= 1;
         }
+
+        //function to get a user's timeline by clicking on a username
+        $(".username").on('click', function() {
+          //clear the timeline; only displays one user's history at a time (for legibility)
+          var $timeline = $('.user-timeline');
+          $timeline.html('');
+          var counter = streams.users.username.length - 1;
+          while (counter >= 0) {
+            var tweet = streams.users.username[counter];
+            var $tweet = $('<li></li>');
+            $tweet.text('@' + tweet.user + ': ' + tweet.message + tweet.created_at);
+            $tweet.appendTo($timeline);
+            index -= 1;
+          }
+        });
 
         index = streams.home.length - 1;
         var origtweets = streams.home.length - 1;
