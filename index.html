@@ -10,7 +10,9 @@
     <button class="new-tweets">New Tweets</button>
     <div class="group">
     <ol class="all-tweets"></ol>
-    <ol class="user-timeline"></ol>
+    <ol class="user-timeline">
+      <li><h4>Click any username for that user's timeline.</h4></li>
+    </ol>
   </div>
     
     <script>
@@ -43,8 +45,8 @@
         $(".new-tweets").on('click', function() {
           //clears header before prepending new list items.
           $(".all-tweets li").first().remove();
-          index = streams.home.length - 1;
-          while (index > origtweets) {
+          index = origtweets + 1;
+          while (index < streams.home.length) {
             //to make sure tweets appear newest first, change to >= to sync up with original tweets.
             var tweet = streams.home[index];
             var $tweet = $('<li></li>');
@@ -54,7 +56,7 @@
             $tweetcontents.append('<li><span class="username">' + '@' + tweet.user +"</span>: " + tweet.message + '</li>');
             $tweetcontents.appendTo($tweet);
             $tweet.prependTo($list);
-            index -= 1;
+            index += 1;
           }
           //restores header, now that new list items have been prepended.
           $list.prepend('<li><h4>All tweets, newest first.</h4></li>');
