@@ -8,7 +8,7 @@
 
     <p>Test Paragraph</p>
     <button class="new-tweets">New Tweets</button>
-    <ol>Tweets List</ol>
+    <ol></ol>
     <script>
 
       $(document).ready(function(){
@@ -20,7 +20,7 @@
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<li></li>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          $tweet.text('@' + tweet.user + ': ' + tweet.message + tweet.created_at);
           $tweet.appendTo($list);
           index -= 1;
         }
@@ -35,11 +35,12 @@
             //to make sure tweets appear newest first, change to >= to sync up with original tweets.
             var tweet = streams.home[index];
             var $tweet = $('<li></li>');
-            $tweet.text('@' + tweet.user + ': ' + tweet.message);
+            $tweet.text('@' + tweet.user + ': ' + tweet.message + tweet.created_at);
             $tweet.prependTo($list);
             index -= 1;
           }
           origtweets = streams.home.length - 1;
+          //reset origtweets to the end of streams.home, now that we updated.
         });
 
       });
