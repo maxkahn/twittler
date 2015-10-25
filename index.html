@@ -65,9 +65,7 @@
           $timeline.html('');
           //alert($(this) + 'was clicked');
           var username = $(this).closest('.username').text().slice(1);
-          var $username = $('<li></li>');
-          $username.append(username);
-          $username.appendTo($timeline);
+          $timeline.append('<li><h4>User timeline for user: ' + username + '</h4></li>');
           var counter = streams.users[username].length - 1;
           while (counter >= 0) {
             var tweet = streams.users[username][counter];
