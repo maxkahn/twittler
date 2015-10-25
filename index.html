@@ -29,7 +29,7 @@
           var $tweet = $('<li></li>');
           //$tweetcontents lists out date/time and username/message as separate entries of a list
           var $tweetcontents = $('<ol></ol>');
-          $tweetcontents.append('<li>' + tweet.created_at + '</li>');
+          $tweetcontents.append('<li class="timestamp">' + tweet.created_at + '</li>');
           $tweetcontents.append('<li><span class="username">' + '@' + tweet.user +"</span>: " + tweet.message +'</li>');
           $tweetcontents.appendTo($tweet);
           $tweet.appendTo($list);
@@ -52,7 +52,7 @@
             var $tweet = $('<li></li>');
             //$tweetcontents lists out date/time and username/message as separate entries of a list
             var $tweetcontents = $('<ol></ol>');
-            $tweetcontents.append('<li>' + tweet.created_at + '</li>');
+            $tweetcontents.append('<li class="timestamp">' + tweet.created_at + '</li>');
             $tweetcontents.append('<li><span class="username">' + '@' + tweet.user +"</span>: " + tweet.message + '</li>');
             $tweetcontents.appendTo($tweet);
             $tweet.prependTo($list);
@@ -77,7 +77,7 @@
             var tweet = streams.users[username][counter];
             var $tweet = $('<li></li>');
             var $tweetcontents = $('<ol></ol>');
-            $tweetcontents.append('<li>' + tweet.created_at + '</li>');
+            $tweetcontents.append('<li class="timestamp">' + tweet.created_at + '</li>');
             $tweetcontents.append('<li>@' + tweet.user + ': ' + tweet.message + '</li>');
             $tweetcontents.appendTo($tweet);
             $tweet.appendTo($timeline);
