@@ -12,7 +12,7 @@
     <div class="group">
     <ol class="all-tweets"></ol>
     <ol class="user-timeline">
-      <li><h4>Click any username for that user's timeline.</h4></li>
+      <li><h4 class="heading">Click any username for that user's timeline.</h4></li>
     </ol>
   </div>
     
@@ -60,7 +60,7 @@
             index += 1;
           }
           //restores header, now that new list items have been prepended.
-          $list.prepend('<li><h4>All tweets, newest first. Click <button class="new-tweets">here</button> for new tweets.</h4></li>');
+          $list.prepend('<li><h4 class="heading">All tweets, newest first. Click <button class="new-tweets">here</button> for new tweets.</h4></li>');
           origtweets = streams.home.length - 1;
           //reset origtweets to the end of streams.home, now that we updated.
         });
@@ -72,7 +72,7 @@
           $timeline.html('');
           //alert($(this) + 'was clicked');
           var username = $(this).closest('.username').text().slice(1);
-          $timeline.append('<li><h4>User timeline for user: ' + username + '</h4></li>');
+          $timeline.append('<li><h4 class="heading">User timeline for user: ' + username + '</h4></li>');
           var counter = streams.users[username].length - 1;
           while (counter >= 0) {
             var tweet = streams.users[username][counter];
