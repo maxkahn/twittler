@@ -4,10 +4,28 @@ ol {
 
 .all-tweets {
 	float: left;
-	width: 45%;
+	width: 40%;
 }
 
 .user-timeline {
 	float: right;
-	width: 45%;
+	width: 40%;
+}
+
+
+/* Clearfix
+*/
+.group:before,
+.group:after {
+	content: "";
+	display: table;
+}
+
+.group:after {
+	clear: both;
+}
+
+.group {
+	clear: both;
+	*zoom: 1;
 }
