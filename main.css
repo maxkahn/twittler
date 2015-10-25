@@ -5,6 +5,8 @@ body {
 	background:			linear-gradient(powderblue, skyblue);
 }
 
+/*Lists*/
+
 ol {
 	list-style-type: none;
 	text-align: left;
@@ -40,4 +42,10 @@ ol {
 .group {
 	clear: both;
 	*zoom: 1;
+}
+
+/* Usernames */
+
+.username:hover {
+	color: blue;
 }
