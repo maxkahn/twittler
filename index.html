@@ -37,14 +37,14 @@
           var $username = $('<li></li>');
           $username.append(username);
           $username.appendTo($timeline);
-          /*var counter = streams.users[username].length - 1;
+          var counter = streams.users[username].length - 1;
           while (counter >= 0) {
             var tweet = streams.users[username][counter];
             var $tweet = $('<li></li>');
             $tweet.text('@' + tweet.user + ': ' + tweet.message + tweet.created_at);
             $tweet.appendTo($timeline);
-            index -= 1;
-          }*/
+            counter -= 1;
+          }
         });
 
         index = streams.home.length - 1;
