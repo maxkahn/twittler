@@ -22,7 +22,13 @@
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<li></li>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message + tweet.created_at);
+          var $user = $('<span></span>');
+          $tweet.append('<span class="username">' + '@' + tweet.user +"</span>: " + tweet.message + tweet.created_at);
+          //$user.append('@' + tweet.user + ":");
+          //$tweet.append($user + ' ' + tweet.message + tweet.created_at);
+          //var $user = $('<span />', {class:"user-timeline", text:'@' + tweet.user + ':'});
+          //$tweet.html('<span class=username> @' + tweet.user + ":</span>" + tweet.message + tweet.created_at);
+          //$tweet.text($user + ' ' + tweet.message + tweet.created_at);
           $tweet.appendTo($list);
           index -= 1;
         }
