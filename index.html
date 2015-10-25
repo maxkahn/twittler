@@ -23,25 +23,23 @@
           index -= 1;
         }
 
-      });
-
-
-    </script>
-
-
-
-
-    <script>
-      $(".new-tweets").on('click', function() {
         index = streams.home.length - 1;
-        while(index >= 0) {
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
-        }
+        var origtweets = streams.home.length - 1;
+        //mew tweets are added to the end of streams, so we look at the end for new tweets
+
+        $(".new-tweets").on('click', function() {
+          index = streams.home.length - 1;
+          while (index >= 0) {
+            var tweet = streams.home[index];
+            var $tweet = $('<div></div>');
+            $tweet.text('@' + tweet.user + ': ' + tweet.message);
+            $tweet.prependTo($body);
+            index -= 1;
+          }
+        });
+
       });
+
 
     </script>
   </body>
