@@ -1,3 +1,10 @@
+body {
+	background: white;
+	background: -webkit-linear-gradient(powderblue, skyblue);
+	background: 	moz-linear-gradient(powderblue, skyblue);
+	background:			linear-gradient(powderblue, skyblue);
+}
+
 ol {
 	list-style-type: none;
 	text-align: left;
