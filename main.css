@@ -1,0 +1,13 @@
+ol {
+	list-style-type: none;
+}
+
+.all-tweets {
+	float: left;
+	width: 45%;
+}
+
+.user-timeline {
+	float: right;
+	width: 45%;
+}

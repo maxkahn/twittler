@@ -9,8 +9,10 @@
 
     <p>Test Paragraph</p>
     <button class="new-tweets">New Tweets</button>
+    <div>
     <ol class="all-tweets"></ol>
     <ol class="user-timeline"></ol>
+  </div>
     
     <script>
 
@@ -70,7 +72,10 @@
           while (counter >= 0) {
             var tweet = streams.users[username][counter];
             var $tweet = $('<li></li>');
-            $tweet.text('@' + tweet.user + ': ' + tweet.message + tweet.created_at);
+            var $tweetcontents = $('<ol></ol>');
+            $tweetcontents.append('<li>' + tweet.created_at + '</li>');
+            $tweetcontents.append('<li>@' + tweet.user + ': ' + tweet.message + '</li>');
+            $tweetcontents.appendTo($tweet);
             $tweet.appendTo($timeline);
             counter -= 1;
           }
