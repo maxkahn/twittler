@@ -22,13 +22,7 @@
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<li></li>');
-          var $user = $('<span></span>');
           $tweet.append('<span class="username">' + '@' + tweet.user +"</span>: " + tweet.message + tweet.created_at);
-          //$user.append('@' + tweet.user + ":");
-          //$tweet.append($user + ' ' + tweet.message + tweet.created_at);
-          //var $user = $('<span />', {class:"user-timeline", text:'@' + tweet.user + ':'});
-          //$tweet.html('<span class=username> @' + tweet.user + ":</span>" + tweet.message + tweet.created_at);
-          //$tweet.text($user + ' ' + tweet.message + tweet.created_at);
           $tweet.appendTo($list);
           index -= 1;
         }
@@ -38,14 +32,19 @@
           //clear the timeline; only displays one user's history at a time (for legibility)
           var $timeline = $('.user-timeline');
           $timeline.html('');
-          var counter = streams.users.username.length - 1;
+          alert($(this) + 'was clicked');
+          var username = $(this).closest('.username').text().slice(1);
+          var $username = $('<li></li>');
+          $username.append(username);
+          $username.appendTo($timeline);
+          /*var counter = streams.users[username].length - 1;
           while (counter >= 0) {
-            var tweet = streams.users.username[counter];
+            var tweet = streams.users[username][counter];
             var $tweet = $('<li></li>');
             $tweet.text('@' + tweet.user + ': ' + tweet.message + tweet.created_at);
             $tweet.appendTo($timeline);
             index -= 1;
-          }
+          }*/
         });
 
         index = streams.home.length - 1;
